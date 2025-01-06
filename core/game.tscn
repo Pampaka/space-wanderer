@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsmgmegj08s1h"]
+
+[ext_resource type="Script" path="res://core/game.gd" id="1_184gv"]
+[ext_resource type="PackedScene" uid="uid://bt7r1vwp1hh4g" path="res://characters/space/player_ship/player_ship.tscn" id="2_dx6xr"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_184gv")
+level_path = "res://levels/space/test_space/test_space.tscn"
+
+[node name="PlayerShip" parent="." instance=ExtResource("2_dx6xr")]

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://csx5qbvhfhomw"]
+
+[ext_resource type="Script" path="res://levels/level.gd" id="1_lhw8l"]
+[ext_resource type="PackedScene" uid="uid://c8yv6ng4lyg5s" path="res://core/player_spawner/player_spawner.tscn" id="2_w6nf2"]
+
+[node name="Level" type="Node"]
+script = ExtResource("1_lhw8l")
+
+[node name="Interface" type="CanvasLayer" parent="."]
+
+[node name="PlayerSpawner" parent="." instance=ExtResource("2_w6nf2")]
+position = Vector2(478, 266)
+id = 1

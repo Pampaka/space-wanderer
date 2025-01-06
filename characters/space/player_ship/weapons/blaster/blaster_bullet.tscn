@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://8jl3g5arv8rr"]
+
+[ext_resource type="Script" path="res://characters/space/player_ship/weapons/blaster/blaster_bullet.gd" id="1_imqgm"]
+[ext_resource type="Texture2D" uid="uid://be6a3sby2qv34" path="res://characters/space/player_ship/assets/bullet.png" id="1_pwa5g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j7w44"]
+size = Vector2(8, 6)
+
+[node name="BlasterBullet" type="Area2D"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_imqgm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_j7w44")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("1_pwa5g")

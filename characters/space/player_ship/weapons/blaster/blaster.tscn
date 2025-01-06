@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cypycf364rj33"]
+
+[ext_resource type="Script" path="res://characters/space/player_ship/weapons/blaster/blaster.gd" id="1_w35p2"]
+[ext_resource type="PackedScene" uid="uid://8jl3g5arv8rr" path="res://characters/space/player_ship/weapons/blaster/blaster_bullet.tscn" id="2_dnkm3"]
+
+[node name="Blaster" type="Node2D"]
+script = ExtResource("1_w35p2")
+bullet_scene = ExtResource("2_dnkm3")
