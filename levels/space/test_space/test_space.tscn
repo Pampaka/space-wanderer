@@ -1,5 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://car0lvb448b35"]
+[gd_scene load_steps=3 format=3 uid="uid://car0lvb448b35"]
 
 [ext_resource type="PackedScene" uid="uid://bw0ni1ofiedf" path="res://levels/space/space_level.tscn" id="1_22e4g"]
+[ext_resource type="PackedScene" uid="uid://gwfybtqmslg6" path="res://characters/space/pirates/pirate_ship_small/pirate_ship_small.tscn" id="2_wjmpi"]
 
 [node name="TestSpace" instance=ExtResource("1_22e4g")]
+
+[node name="PirateShipSmall" parent="." index="2" instance=ExtResource("2_wjmpi")]
+position = Vector2(697, 265)
+rotation = 3.14159

@@ -39,6 +39,7 @@ animations = [{
 radius = 16.0
 
 [node name="PlayerShip" type="CharacterBody2D"]
+collision_mask = 4
 script = ExtResource("1_816h7")
 
 [node name="Ship" type="AnimatedSprite2D" parent="."]
