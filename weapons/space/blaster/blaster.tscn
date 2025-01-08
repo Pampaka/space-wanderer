@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnv48v27683yf"]
+
+[ext_resource type="Script" path="res://weapons/space/blaster/blaster.gd" id="1_cak8m"]
+[ext_resource type="PackedScene" uid="uid://03u2cw0r0cyp" path="res://weapons/space/blaster/blaster_bullet.tscn" id="2_m2lml"]
+[ext_resource type="Texture2D" uid="uid://ceb0a7rli63gy" path="res://weapons/space/blaster/bullet.png" id="3_fns8g"]
+
+[node name="Blaster" type="Node2D"]
+script = ExtResource("1_cak8m")
+bullet_scene = ExtResource("2_m2lml")
+bullet_texture = ExtResource("3_fns8g")

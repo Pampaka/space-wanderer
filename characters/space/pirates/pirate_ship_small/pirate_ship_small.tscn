@@ -1,20 +1,82 @@
-[gd_scene load_steps=4 format=3 uid="uid://gwfybtqmslg6"]
+[gd_scene load_steps=12 format=3 uid="uid://gwfybtqmslg6"]
 
 [ext_resource type="Script" path="res://characters/space/pirates/pirate_ship_small/pirate_ship_small.gd" id="1_im65r"]
-[ext_resource type="Texture2D" uid="uid://bebqos4oeam77" path="res://icon.svg" id="1_smcie"]
+[ext_resource type="Texture2D" uid="uid://bxhbyjal3biwp" path="res://characters/space/pirates/pirate_ship_small/assets/pirate_ship_small.png" id="2_j32dq"]
+[ext_resource type="Texture2D" uid="uid://b0cbxwxayuiun" path="res://characters/space/pirates/pirate_ship_small/assets/pirate_ship_small_move.png" id="3_0hu3r"]
+[ext_resource type="PackedScene" uid="uid://cnv48v27683yf" path="res://weapons/space/blaster/blaster.tscn" id="4_xkymw"]
+[ext_resource type="Texture2D" uid="uid://d58ofbr5sx30" path="res://characters/space/pirates/assets/bullet.png" id="5_jlvpt"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_xwfls"]
-radius = 16.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4cg0"]
+atlas = ExtResource("3_0hu3r")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fvrop"]
+atlas = ExtResource("3_0hu3r")
+region = Rect2(33, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_76om1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_j32dq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v4cg0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fvrop")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u5fha"]
+radius = 9.0
+height = 26.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ykl28"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_80kdj"]
 
 [node name="PirateShipSmall" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 5
 script = ExtResource("1_im65r")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Ship" type="AnimatedSprite2D" parent="."]
 rotation = 1.5708
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_smcie")
+sprite_frames = SubResource("SpriteFrames_76om1")
+animation = &"move"
+frame_progress = 0.825318
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_xwfls")
+position = Vector2(3, 0)
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_u5fha")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-5, 0)
+shape = SubResource("CapsuleShape2D_ykl28")
+
+[node name="AggroZone" type="Area2D" parent="."]
+visible = false
+scale = Vector2(30, 30)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AggroZone"]
+shape = SubResource("CircleShape2D_80kdj")
+
+[node name="Blaster" parent="." instance=ExtResource("4_xkymw")]
+bullet_texture = ExtResource("5_jlvpt")
+bullet_mask = 1
+cool_down = 0.5
+
+[connection signal="body_entered" from="AggroZone" to="." method="_on_aggro_zone_body_entered"]
+[connection signal="body_exited" from="AggroZone" to="." method="_on_aggro_zone_body_exited"]

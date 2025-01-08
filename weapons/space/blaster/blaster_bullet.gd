@@ -1,7 +1,6 @@
 extends Area2D
 
-const MAX_RANGE = 500.0
-
+var max_range = 300.0
 var damage = 3
 var speed = 700.0
 var current_range = 0.0
@@ -15,11 +14,15 @@ func _process(delta: float) -> void:
 	global_position += direction * distance
 	
 	current_range += distance
-	if current_range >= MAX_RANGE:
+	if current_range >= max_range:
 		queue_free()
+
+
+func set_texture(texture: Texture2D):
+	$Sprite2D.texture = texture
 
 
 func _body_entered(body: Node2D):
-	if body.take_damage:
+	if body.has_method("take_damage"):
 		body.take_damage(damage)
-		queue_free()
+	queue_free()

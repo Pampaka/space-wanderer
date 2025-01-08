@@ -4,9 +4,8 @@ extends CharacterBody2D
 
 @onready var weapon = $Blaster
 
-const MAX_SPEED = 250.0
-
-var speed = MAX_SPEED
+var max_speed = 250.0
+var speed = max_speed
 var acceleration = 700.0
 var friction = 500.0
 var rotation_speed = acceleration / 30
@@ -22,11 +21,11 @@ func _physics_process(delta: float) -> void:
 	weapon.is_shooting = Input.is_action_pressed("attack")
 	if weapon.is_shooting:
 		rotation = global_position.angle_to_point(get_global_mouse_position())
-		
+	
+	# Movement
 	var direction = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	direction = direction.normalized()
 	
-	# Movement
 	if direction:
 		velocity = velocity.move_toward(direction * speed, acceleration * delta)
 		$Ship.animation = "move"
