@@ -19,8 +19,6 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	# Shooting
 	weapon.is_shooting = Input.is_action_pressed("attack")
-	if weapon.is_shooting:
-		rotation = global_position.angle_to_point(get_global_mouse_position())
 	
 	# Movement
 	var direction = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
@@ -37,5 +35,14 @@ func _physics_process(delta: float) -> void:
 	
 	if velocity.length() > speed:
 		velocity = velocity.normalized() * speed;
+	
+	# Rotation
+	var view_direction = Input.get_vector("view_left", "view_right", "view_up", "view_down")
+	if view_direction:
+		rotation = view_direction.angle()
+	elif weapon.is_shooting:
+		rotation = global_position.angle_to_point(get_global_mouse_position())
+	else:
+		rotation = lerp_angle(rotation, direction.angle(), rotation_speed * delta)
 	
 	move_and_slide()

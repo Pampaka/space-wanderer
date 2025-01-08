@@ -11,3 +11,5 @@ script = ExtResource("1_lhw8l")
 [node name="PlayerSpawner" parent="." instance=ExtResource("2_w6nf2")]
 position = Vector2(478, 266)
 id = 1
+
+[node name="Camera" type="Camera2D" parent="."]

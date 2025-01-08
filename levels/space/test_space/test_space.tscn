@@ -5,6 +5,9 @@
 
 [node name="TestSpace" instance=ExtResource("1_22e4g")]
 
-[node name="PirateShipSmall" parent="." index="2" instance=ExtResource("2_wjmpi")]
+[node name="PirateShipSmall2" parent="." index="0" instance=ExtResource("2_wjmpi")]
+position = Vector2(366, 73)
+
+[node name="PirateShipSmall" parent="." index="3" instance=ExtResource("2_wjmpi")]
 position = Vector2(697, 265)
 rotation = 3.14159
