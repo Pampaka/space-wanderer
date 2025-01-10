@@ -23,6 +23,6 @@ func set_texture(texture: Texture2D):
 
 
 func _body_entered(body: Node2D):
-	if body.has_method("get_health"):
-		body.get_health().take_damage(damage)
+	if body.health:
+		body.health.take_damage(damage)
 	queue_free()

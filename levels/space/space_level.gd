@@ -3,6 +3,7 @@ extends Level
 
 
 @onready var camera = $Camera
+@onready var hud = $Interface/SpaceHUD
 
 
 func initialize(player_ship: PlayerShip, spawner_id: int = 1) -> void:
@@ -17,3 +18,6 @@ func initialize(player_ship: PlayerShip, spawner_id: int = 1) -> void:
 	# Camera
 	camera.global_position = player_ship.global_position
 	camera.target = player_ship
+	
+	# HUD
+	hud.initialize(player_ship)

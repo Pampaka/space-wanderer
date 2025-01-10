@@ -51,10 +51,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func get_health():
-	return health
-
-
 func die() -> void:
 	died.emit()
 	set_physics_process(false)
