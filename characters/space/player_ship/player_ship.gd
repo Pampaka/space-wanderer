@@ -42,7 +42,7 @@ func _physics_process(delta: float) -> void:
 		rotation = view_direction.angle()
 	elif weapon.is_shooting:
 		rotation = global_position.angle_to_point(get_global_mouse_position())
-	else:
+	elif direction:
 		rotation = lerp_angle(rotation, direction.angle(), rotation_speed * delta)
 	
 	move_and_slide()
