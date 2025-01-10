@@ -3,9 +3,8 @@ extends CharacterBody2D
 
 signal died
 
+@onready var health = $Health
 @onready var weapon = $Blaster
-
-var health = 10
 
 var max_speed = 200.0
 var speed = max_speed
@@ -51,14 +50,11 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func take_damage(damage: int):
-	health -= damage
-	if health <= 0:
-		die()
+func get_health():
+	return health
 
 
 func die():
-	health = 0
 	died.emit()
 	queue_free()
 

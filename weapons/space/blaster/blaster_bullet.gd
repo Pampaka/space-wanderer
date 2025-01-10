@@ -8,7 +8,7 @@ var current_range = 0.0
 func _ready() -> void:
 	body_entered.connect(_body_entered)
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	var direction = Vector2.RIGHT.rotated(rotation).normalized()
 	var distance = speed * delta
 	global_position += direction * distance
@@ -23,6 +23,6 @@ func set_texture(texture: Texture2D):
 
 
 func _body_entered(body: Node2D):
-	if body.has_method("take_damage"):
-		body.take_damage(damage)
+	if body.has_method("get_health"):
+		body.get_health().take_damage(damage)
 	queue_free()

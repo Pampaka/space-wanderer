@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://gwfybtqmslg6"]
+[gd_scene load_steps=13 format=3 uid="uid://gwfybtqmslg6"]
 
 [ext_resource type="Script" path="res://characters/space/pirates/pirate_ship_small/pirate_ship_small.gd" id="1_im65r"]
 [ext_resource type="Texture2D" uid="uid://bxhbyjal3biwp" path="res://characters/space/pirates/pirate_ship_small/assets/pirate_ship_small.png" id="2_j32dq"]
 [ext_resource type="Texture2D" uid="uid://b0cbxwxayuiun" path="res://characters/space/pirates/pirate_ship_small/assets/pirate_ship_small_move.png" id="3_0hu3r"]
 [ext_resource type="PackedScene" uid="uid://cnv48v27683yf" path="res://weapons/space/blaster/blaster.tscn" id="4_xkymw"]
 [ext_resource type="Texture2D" uid="uid://d58ofbr5sx30" path="res://characters/space/pirates/assets/bullet.png" id="5_jlvpt"]
+[ext_resource type="PackedScene" uid="uid://cnov4w3twcxsa" path="res://common/health/health.tscn" id="6_2bhhf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v4cg0"]
 atlas = ExtResource("3_0hu3r")
@@ -78,5 +79,8 @@ bullet_texture = ExtResource("5_jlvpt")
 bullet_mask = 1
 cool_down = 0.5
 
+[node name="Health" parent="." instance=ExtResource("6_2bhhf")]
+
 [connection signal="body_entered" from="AggroZone" to="." method="_on_aggro_zone_body_entered"]
 [connection signal="body_exited" from="AggroZone" to="." method="_on_aggro_zone_body_exited"]
+[connection signal="over" from="Health" to="." method="die"]

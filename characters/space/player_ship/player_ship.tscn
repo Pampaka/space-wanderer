@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bt7r1vwp1hh4g"]
+[gd_scene load_steps=11 format=3 uid="uid://bt7r1vwp1hh4g"]
 
 [ext_resource type="Script" path="res://characters/space/player_ship/player_ship.gd" id="1_816h7"]
 [ext_resource type="Texture2D" uid="uid://cdx11ouq061cw" path="res://characters/space/player_ship/assets/ship.png" id="1_cp0uy"]
 [ext_resource type="Texture2D" uid="uid://cun3h1yotard" path="res://characters/space/player_ship/assets/ship_move.png" id="2_pget1"]
 [ext_resource type="PackedScene" uid="uid://cnv48v27683yf" path="res://weapons/space/blaster/blaster.tscn" id="4_78ten"]
 [ext_resource type="Texture2D" uid="uid://be6a3sby2qv34" path="res://characters/space/player_ship/assets/bullet.png" id="5_pk4wu"]
+[ext_resource type="PackedScene" uid="uid://cnov4w3twcxsa" path="res://common/health/health.tscn" id="6_pe7vb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_llymq"]
 atlas = ExtResource("2_pget1")
@@ -53,3 +54,7 @@ shape = SubResource("CircleShape2D_neu7l")
 
 [node name="Blaster" parent="." instance=ExtResource("4_78ten")]
 bullet_texture = ExtResource("5_pk4wu")
+
+[node name="Health" parent="." instance=ExtResource("6_pe7vb")]
+
+[connection signal="over" from="Health" to="." method="die"]

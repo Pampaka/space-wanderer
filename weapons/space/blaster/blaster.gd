@@ -17,7 +17,7 @@ func initialize(character: CharacterBody2D):
 	blaster_owner = character
 
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	time_since_last_shot += delta
 	
 	if is_shooting and time_since_last_shot >= cool_down:

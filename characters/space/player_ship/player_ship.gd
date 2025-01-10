@@ -2,6 +2,9 @@ class_name PlayerShip
 extends CharacterBody2D
 
 
+signal died
+
+@onready var health = $Health
 @onready var weapon = $Blaster
 
 var max_speed = 250.0
@@ -46,3 +49,12 @@ func _physics_process(delta: float) -> void:
 		rotation = lerp_angle(rotation, direction.angle(), rotation_speed * delta)
 	
 	move_and_slide()
+
+
+func get_health():
+	return health
+
+
+func die() -> void:
+	died.emit()
+	set_physics_process(false)
